@@ -6,11 +6,13 @@ var qs = require('querystring');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var compression = require('compression');
-var sanitizeHtml = require('sanitize-html');
 var template = require('./lib/template.js');
+var helmet = require('helmet')
+const port = 3000
+app.use(helmet());
+
 var indexRouter = require('./routes/index');
 var topicRouter = require('./routes/topic');
-const port = 3000
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
